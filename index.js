@@ -14,6 +14,7 @@ app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 
+
 mongoose.connect(process.env.MONGO_URL, {
         useNewUrlParser: true, 
         useUnifiedTopology: true,
@@ -36,6 +37,7 @@ const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
     res.status(200).json("File has been uploaded");
 });
+
 
 
 app.use("/api/auth", authRoute);
